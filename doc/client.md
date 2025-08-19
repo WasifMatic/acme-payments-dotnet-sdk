@@ -28,13 +28,13 @@ ApimaticCalculatorClient client = new ApimaticCalculatorClient.Builder()
 
 ## APIMATIC CalculatorClient Class
 
-The gateway for the SDK. This class acts as a factory for the Apis and also holds the configuration of the SDK.
+The gateway for the SDK. This class acts as a factory for the Controllers and also holds the configuration of the SDK.
 
 ### Controllers
 
 | Name | Description |
 |  --- | --- |
-| SimpleCalculatorApi | Gets SimpleCalculatorApi. |
+| SimpleCalculatorController | Gets SimpleCalculatorController controller. |
 
 ### Properties
 

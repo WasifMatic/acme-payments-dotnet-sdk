@@ -1,12 +1,12 @@
 # Simple Calculator
 
 ```csharp
-SimpleCalculatorApi simpleCalculatorApi = client.SimpleCalculatorApi;
+SimpleCalculatorController simpleCalculatorController = client.SimpleCalculatorController;
 ```
 
 ## Class Name
 
-`SimpleCalculatorApi`
+`SimpleCalculatorController`
 
 
 # Calculate
@@ -40,7 +40,7 @@ double x = 222.14;
 double y = 165.14;
 try
 {
-    ApiResponse<double> result = await simpleCalculatorApi.CalculateAsync(
+    ApiResponse<double> result = await simpleCalculatorController.CalculateAsync(
         operation,
         x,
         y

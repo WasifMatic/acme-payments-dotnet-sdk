@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using APIMatic.Core;
 using APIMatic.Core.Utilities.Logger.Configuration;
-using ApimaticCalculator.Standard.Apis;
+using ApimaticCalculator.Standard.Controllers;
 using ApimaticCalculator.Standard.Http.Client;
 using ApimaticCalculator.Standard.Logging;
 using ApimaticCalculator.Standard.Utilities;
@@ -16,8 +16,8 @@ using ApimaticCalculator.Standard.Utilities;
 namespace ApimaticCalculator.Standard
 {
     /// <summary>
-    /// The gateway for the SDK. This class acts as a factory for Api and holds the
-    /// configuration of the SDK.
+    /// The gateway for the SDK. This class acts as a factory for Controller and
+    /// holds the configuration of the SDK.
     /// </summary>
     public sealed class ApimaticCalculatorClient : IConfiguration
     {
@@ -35,9 +35,9 @@ namespace ApimaticCalculator.Standard
 
         private readonly GlobalConfiguration globalConfiguration;
         private SdkLoggingConfiguration sdkLoggingConfiguration;
-        private const string userAgent = "DotNet-SDK/1.1.1 [OS: {os-info}, Engine: {engine}/{engine-version}]";
+        private const string userAgent = "DotNet-SDK/1.0.0 [OS: {os-info}, Engine: {engine}/{engine-version}]";
         private readonly HttpCallback httpCallback;
-        private readonly Lazy<SimpleCalculatorApi> simpleCalculator;
+        private readonly Lazy<SimpleCalculatorController> simpleCalculator;
 
         private ApimaticCalculatorClient(
             Environment environment,
@@ -59,14 +59,14 @@ namespace ApimaticCalculator.Standard
                 .Build();
 
 
-            this.simpleCalculator = new Lazy<SimpleCalculatorApi>(
-                () => new SimpleCalculatorApi(globalConfiguration));
+            this.simpleCalculator = new Lazy<SimpleCalculatorController>(
+                () => new SimpleCalculatorController(globalConfiguration));
         }
 
         /// <summary>
-        /// Gets SimpleCalculatorApi.
+        /// Gets SimpleCalculatorController controller.
         /// </summary>
-        public SimpleCalculatorApi SimpleCalculatorApi => this.simpleCalculator.Value;
+        public SimpleCalculatorController SimpleCalculatorController => this.simpleCalculator.Value;
 
         /// <summary>
         /// Gets the configuration of the Http Client associated with this client.
